@@ -7,16 +7,22 @@ public class CreditCard {
     private String account_number;
     private double money;
 
-    public CreditCard(String account_number) {
+    public CreditCard(String account_number, double money) {
         this.account_number = account_number;
+        this.money = money;
     }
 
     public void addMoney(double amount) {
-        money += amount;
+        this.money += amount;
     }
 
     public void takeMoney(double amount) {
-        money -= amount;
+        if(this.money >= amount) {
+            money -= amount;
+        }
+        else {
+            System.out.println("Not enough money.");
+        }
     }
 
     public void cardStatus() {
@@ -27,18 +33,28 @@ public class CreditCard {
 
         Scanner scan = new Scanner(System.in);
 
-        double initial_amount;
+        double initial_amount1;
         do {
-            initial_amount = scan.nextDouble();
-        } while(initial_amount < 0);
+            initial_amount1 = scan.nextDouble();
+        } while(initial_amount1 < 0);
 
-        CreditCard card1 = new CreditCard("12345");
-        CreditCard card2 = new CreditCard("23456");
-        CreditCard card3 = new CreditCard("34567");
+        double initial_amount2;
+        do {
+            initial_amount2 = scan.nextDouble();
+        } while(initial_amount2 < 0);
 
-        card1.addMoney(11.2);
-        card2.addMoney(14.7);
-        card3.takeMoney(3.76);
+        double initial_amount3;
+        do {
+            initial_amount3 = scan.nextDouble();
+        } while(initial_amount3 < 0);
+
+        CreditCard card1 = new CreditCard("num12345", initial_amount1);
+        CreditCard card2 = new CreditCard("num23456", initial_amount2);
+        CreditCard card3 = new CreditCard("num34567", initial_amount3);
+
+        card1.addMoney(scan.nextDouble());
+        card2.addMoney(scan.nextDouble());
+        card3.takeMoney(scan.nextDouble());
 
         card1.cardStatus();
         card2.cardStatus();
