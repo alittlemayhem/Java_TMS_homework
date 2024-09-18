@@ -20,7 +20,7 @@ public class CreditCard {
     }
 
     public void cardStatus() {
-        System.out.println("The actual status of account number: " + account_number + " is " + money " $ .");
+        System.out.println("The actual status of account number: " + account_number + " is " + money + " $ .");
     }
 
     public static void main(String[] args) {
